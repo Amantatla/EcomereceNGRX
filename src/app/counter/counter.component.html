@@ -1,0 +1,22 @@
+<!-- Counter Section -->
+<div
+class="bg-white shadow-lg rounded-lg p-6 flex flex-col items-center">
+<!-- Counter Display -->
+<div id="counterDisplay" class="text-4xl font-bold mb-6">{{conunt$ | async}}</div>
+
+<!-- Buttons -->
+<div class="flex space-x-4 px-4">
+  <button (click)="increment()" id="incrementBtn"
+    class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600">
+    Increment
+  </button>
+  <button (click)="decrement()" id="decrementBtn"
+    class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600">
+    Decrement
+  </button>
+  <button (click)="reset()" id="resetBtn"
+    class="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600">
+    Reset
+  </button>
+</div>
+</div>
