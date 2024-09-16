@@ -6,6 +6,7 @@ export interface Iproduct {
     category: string
     image: string
     rating: Rating
+    quantity: number
   }
   
   export interface Rating {
