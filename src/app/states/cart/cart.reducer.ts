@@ -8,16 +8,21 @@ export interface CartState {
 }
 
 export const initialCounterState: CartState = {
-    products: []
+    products: [],
+    totalPrice: 0
 }
 
+export function calculateTotalPrice(products: Iproduct[]) {
+    return products.reduce((total, product) => total + (product.price * product.quantity), 0)
+}
 export const cartReducer = createReducer(
     initialCounterState,
     on(cartActions.addToCart, (state, { product }) => {
         const updatedProduct = [...state.products, product];
         return {
             ...state,
-            products: updatedProduct
+            products: updatedProduct,
+            totalPrice:calculateTotalPrice(updatedProduct)
         }
 
     }),
@@ -25,14 +30,16 @@ export const cartReducer = createReducer(
         const updatedProduct = state.products.map((product) => product.id === productId ? { ...product, quantity: product.quantity + 1 } : product)
         return {
             ...state,
-            products: updatedProduct
+            products: updatedProduct,
+            totalPrice:calculateTotalPrice(updatedProduct)
         }
     }),
     on(cartActions.decrementProduct, (state, { productId }) => {
         const updatedProduct = state.products.map((product) => product.id === productId ? { ...product, quantity: product.quantity - 1 } : product)
         return {
             ...state,
-            products: updatedProduct
+            products: updatedProduct,
+            totalPrice:calculateTotalPrice(updatedProduct)
         }
     }),
     on(cartActions.removeItem, (state, { productId }) => {
@@ -41,7 +48,8 @@ export const cartReducer = createReducer(
         );
         return {
             ...state,
-            products: updatedProduct
+            products: updatedProduct,
+            totalPrice:calculateTotalPrice(updatedProduct)
         }
     })
 )

@@ -15,7 +15,7 @@ export class ProductApiService {
       .pipe(
         map((products) => {
           return products.map((product) => {
-            return { ...product, quantity: 1 }
+            return { ...product, quantity: 1}
           })
         })
       )
