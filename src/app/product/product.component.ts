@@ -7,6 +7,8 @@ import { Iproduct } from '../shared/models/product.interface';
 import { ProductApiService } from '../shared/services/product-api.service';
 import { Store } from '@ngrx/store';
 import { addToCart } from '../states/cart/cart.action';
+import * as productAction from '../states/product/product.action';
+import * as productSelector from '../states/product/product.selector';
 
 @Component({
   selector: 'app-product',
@@ -16,11 +18,16 @@ import { addToCart } from '../states/cart/cart.action';
   styleUrl: './product.component.scss'
 })
 export class ProductComponent implements OnInit {
-  product_api = inject(ProductApiService)
+  product_api = inject(ProductApiService);
   http = inject(HttpClient);
-  product$ = this.product_api.getProducts() as Observable<Iproduct[]>
+  product$!: Observable<Iproduct[]>;
+  error!: Observable<string | null>;
 
-  constructor(private store: Store<{ cart: { products: Iproduct[] } }>) { }
+  constructor(private store: Store<{ cart: { products: Iproduct[] } }>) {
+    this.store.dispatch(productAction.loadProduct());
+    this.product$ = this.store.select(productSelector.selectAllProduct);
+    this.error = this.store.select(productSelector.selectProductError);
+  }
 
   ngOnInit(): void {
   }

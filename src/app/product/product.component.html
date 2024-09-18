@@ -1,7 +1,13 @@
 <section
     class="w-fit mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 items-center justify-center gap-y-20 gap-x-14 mt-10 mb-5">
+    @if (error | async) {
+    <h1 class="text-4xl font-semibold">Something went wrong while loading
+        products</h1>
+    } @else {
 
     @for (item of product$ | async; track $index) {
-    <app-product-card [product]="item" (handleAdd)="addItemToCart($event)"/>
+    <app-product-card [product]="item" (handleAdd)="addItemToCart($event)" />
     }
+    }
+
 </section>
