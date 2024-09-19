@@ -15,9 +15,12 @@ export class ProductApiService {
       .pipe(
         map((products) => {
           return products.map((product) => {
-            return { ...product, quantity: 1}
+            return { ...product, quantity: 1 }
           })
         })
       )
+  }
+  getSingleProduct(id: number) {
+    return this.http.get<Iproduct>(`https://fakestoreapi.com/products/${id}`)
   }
 }

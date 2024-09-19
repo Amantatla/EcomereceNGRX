@@ -3,7 +3,7 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
     {
         path: '',
-        redirectTo:'product',
+        redirectTo:'product', 
         pathMatch: 'full'
     },
     {
@@ -17,5 +17,9 @@ export const routes: Routes = [
     {
         path: 'cart',
         loadComponent: ()=> import('./cart/cart.component').then(a => a.CartComponent)
+    },
+    {
+        path: 'details/:id',
+        loadComponent: ()=> import('./product-detail/product-detail.component').then(a => a.ProductDetailComponent)
     },
 ];
