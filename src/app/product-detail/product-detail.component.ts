@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { ProductApiService } from '../shared/services/product-api.service';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { Iproduct } from '../shared/models/product.interface';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-product-detail',
@@ -10,10 +11,14 @@ import { Iproduct } from '../shared/models/product.interface';
   imports: [CommonModule],
   templateUrl: './product-detail.component.html'
 })
-export class ProductDetailComponent {
+export class ProductDetailComponent implements OnInit {
+  param!: number
   api = inject(ProductApiService)
-  product$ = this.api.getSingleProduct(1) as Observable<Iproduct>
-  constructor() {
+  route = inject(ActivatedRoute)
+  product$!: Observable<Iproduct>
+  ngOnInit(): void {
+    this.param = Number(this.route.snapshot.paramMap.get('id'));
+    this.product$ = this.api.getSingleProduct(this.param)
   }
 
 }
