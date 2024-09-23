@@ -1,40 +1,9 @@
 
-<!-- 
-    <div
-        class="w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
-        <a href="#">
-            <img
-                [src]="product.image"
-                alt="Product" class="h-80 w-72 object-cover rounded-t-xl" />
-            <div class="px-4 py-3 w-72">
-                <span class="text-gray-400 mr-3 uppercase text-xs">{{product.category}}</span>
-                <p
-                    class="text-lg font-bold text-black truncate block capitalize">{{product.title}}</p>
-                <p
-                    class="text-sm font-medium text-black block">{{product.description.substring(0, 90)}}...</p>
-                <div class="flex items-center">
-                    <p
-                        class="text-lg font-semibold text-black cursor-auto my-3">{{product.price | currency}}</p>
-                    
-                    <div class="ml-auto"><svg xmlns="http://www.w3.org/2000/svg"
-                            width="20" height="20" fill="currentColor"
-                            class="bi bi-bag-plus" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd"
-                                d="M8 7.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0v-1.5H6a.5.5 0 0 1 0-1h1.5V8a.5.5 0 0 1 .5-.5z" />
-                            <path
-                                d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
-                        </svg></div>
-                </div>
-            </div>
-        </a>
-    </div> -->
-
-
         <div class="w-[350px] p-2">
-          <div class="bg-white shadow-lg hover:shadow-xl rounded-lg " >
-            <div class="bg-gray-400 h-64 rounded-t-lg p-4 bg-no-repeat bg-center bg-cover" [ngStyle]="{ 'background-image': 'url(' + product.image + ')' }">
+          <div class="bg-white shadow-lg hover:shadow-xl rounded-lg">
+            <div class="h-64 rounded-t-lg p-4 bg-no-repeat bg-center bg-contain" [ngStyle]="{ 'background-image': 'url(' + product.image + ')' }">
               <div class="text-right">
-                <button class="text-pink-500 hover:text-pink-600 p-2 rounded-full" style="background: rgba(0,0,0,0.3)">
+                <button class="text-teal-500 hover:text-teal-600 p-2 rounded-full" style="background: rgba(106, 105, 105, 0.3)">
                   <svg class="w-6 h-6" viewBox="0 0 24 24">
                     <path fill="currentColor" d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z" />
                   </svg>
@@ -48,7 +17,6 @@
               </div>
               <div class="p-2 text-right">
                 <div class="text-teal-500 font-semibold text-lg font-poppins">{{product.price | currency}}</div>
-                <!-- <div class="text-xs text-gray-500 line-through font-poppins">$80</div> -->
               </div>
             </div>
             <div class="flex justify-center items-center px-2 pb-2">

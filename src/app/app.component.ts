@@ -19,10 +19,12 @@ import { selectCartProducts } from './states/cart/cart.selector';
 })
 export class AppComponent {
   conunt$: Observable<number>;
-  products$ : Observable<Iproduct[]>;
-  constructor(private store:Store<AppState>) {
+  products$: Observable<Iproduct[]>;
+  constructor(private store: Store<AppState>) {
     this.conunt$ = this.store.select(selectCount),
-    this.products$ = this.store.select(selectCartProducts)
+      this.products$ = this.store.select(selectCartProducts)
   }
   title = 'counExample';
+
+  
 }
