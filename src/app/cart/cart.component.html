@@ -1,8 +1,12 @@
 @if ((cartItem$ | async)?.length == 0) {
 <div class="w-full h-full flex flex-wrap justify-center items-center mt-16">
-    <img src="https://static.vecteezy.com/system/resources/thumbnails/008/515/488/small/empty-cart-flat-illustration-concept-vector.jpg" class="object-contain text-center">
+    <img
+        src="https://static.vecteezy.com/system/resources/thumbnails/008/515/488/small/empty-cart-flat-illustration-concept-vector.jpg"
+        class="object-contain text-center">
     <p class="w-full text-center text-2xl font-semibold">Your Cart us Empty</p>
-    <a routerLink="/product" class="w-full cursor-pointer text-center text-xl font-semibold text-teal-500">continue Shopping</a>
+    <a routerLink="/product"
+        class="w-full cursor-pointer text-center text-xl font-semibold text-teal-500 hover:underline">Continue
+        Shopping</a>
 </div>
 } @else {
 <!-- new cart -->
@@ -62,6 +66,9 @@
                                 <h6
                                     class="font-medium text-base leading-7 text-gray-600 transition-all duration-300 group-hover:text-teal-500">{{item.price
                                     | currency}}</h6>
+                                <a
+                                    (click)="removeItem({ productId: item.id })"
+                                    class="font-medium text-base leading-7 text-red-500 hover:underline cursor-pointer">Remove</a>
                             </div>
                         </div>
                         <div

@@ -35,7 +35,7 @@ export const cartReducer = createReducer(
         }
     }),
     on(cartActions.decrementProduct, (state, { productId }) => {
-        const updatedProduct = state.products.map((product) => product.id === productId ? { ...product, quantity: product.quantity - 1 } : product)
+        const updatedProduct = state.products.map((product) => product.id === productId && product.quantity > 1 ? { ...product, quantity: product.quantity - 1 } : product)
         return {
             ...state,
             products: updatedProduct,
