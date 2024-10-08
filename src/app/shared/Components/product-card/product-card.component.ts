@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, output, Output } from '@angular/core';
 import { Iproduct } from '../../models/product.interface';
 import { RouterLink } from '@angular/router';
 
@@ -13,7 +13,8 @@ import { RouterLink } from '@angular/router';
 export class ProductCardComponent {
 
   @Input() product!: Iproduct;
-  @Output() handleAdd = new EventEmitter
+  // @Output() handleAdd = new EventEmitter
+  handleAdd = output<Iproduct>();
 
   addToCart(product: Iproduct) {
     this.handleAdd.emit(product)
